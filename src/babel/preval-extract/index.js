@@ -136,6 +136,19 @@ export default (babel: BabelCore) => {
 
           path.replaceWith(className);
           path.addComment('leading', 'linaria-output');
+
+          let program;
+
+          requirements.forEach(req => {
+            if (req.dependency) {
+              program = program || path.findParent(p => types.isProgram(p));
+              program.addComment(
+                'trailing',
+                `linaria-dependency: ${req.dependency}`,
+                true
+              );
+            }
+          });
         }
       },
     },

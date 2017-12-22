@@ -58,10 +58,12 @@ export default function resolveSource(
   }
 
   let code: ?string;
+  let dependency: ?string;
 
   switch (binding.kind) {
     case 'module':
       code = binding.path.parentPath.getSource();
+      dependency = binding.path.parent.source.value;
       break;
     case 'const':
     case 'let':
@@ -77,6 +79,19 @@ export default function resolveSource(
           binding.path.getSource().length === 0
             ? null
             : `${binding.kind} ${binding.path.getSource()}`;
+
+        const { init } = binding.path.node;
+
+        if (
+          types.isCallExpression(init) &&
+          init.callee.name === 'require' &&
+          init.arguments.length === 1
+        ) {
+          dependency = binding.path
+            .get('init')
+            .get('arguments')[0]
+            .evaluate().value;
+        }
       }
       break;
     }
@@ -92,5 +107,6 @@ export default function resolveSource(
   return {
     code,
     loc: binding.path.node.loc.start,
+    dependency,
   };
 }

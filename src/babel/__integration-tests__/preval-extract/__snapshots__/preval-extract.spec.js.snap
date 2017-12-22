@@ -29,6 +29,7 @@ const size = 3;
 let color = "#ffffff";
 
 const header = /*linaria-output*/"_header__zkmz8m";
+//linaria-dependency: <<CWD>>/build/css.js
 `;
 
 exports[`preval-extract babel plugin should preval css with classname from another prevaled css 1`] = `

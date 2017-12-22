@@ -19,6 +19,9 @@ describe('preval-extract babel plugin with ES imports', () => {
     const css = getCSSForClassName(match[1]);
     expect(css).toMatch('font-size: 14px');
     expect(css).toMatchSnapshot();
+    expect(code).toMatch(
+      '//linaria-dependency: ./src/babel/__integration-tests__/__fixtures__/esm/constants.js'
+    );
   });
 
   it('should preval named imports', () => {
@@ -44,6 +47,9 @@ describe('preval-extract babel plugin with ES imports', () => {
     expect(headerStyles).toMatchSnapshot();
     expect(bodyStyles).toMatch('font-size: 24px');
     expect(bodyStyles).toMatchSnapshot();
+    expect(code).toMatch(
+      '//linaria-dependency: ./src/babel/__integration-tests__/__fixtures__/esm/named.js'
+    );
   });
 
   it('should preval imported module tree with constants', () => {
@@ -60,5 +66,8 @@ describe('preval-extract babel plugin with ES imports', () => {
     const css = getCSSForClassName(match[1]);
     expect(css).toMatch('font-size: 28px');
     expect(css).toMatchSnapshot();
+    expect(code).toMatch(
+      '//linaria-dependency: ./src/babel/__integration-tests__/__fixtures__/esm/deep.js'
+    );
   });
 });

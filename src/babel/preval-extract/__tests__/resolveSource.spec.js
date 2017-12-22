@@ -32,13 +32,18 @@ describe('preval-extract/resolveSource', () => {
     }).toThrowError();
   });
 
-  it('should return code and loc for module node', () => {
+  it('should return code, loc and dependency for module node', () => {
     runAssertions(
       {
         kind: 'module',
         path: {
           parentPath: {
             getSource: () => 'source',
+          },
+          parent: {
+            source: {
+              value: 'foo',
+            },
           },
           node: {
             loc: { start: { line: 0, column: 0 } },
@@ -48,6 +53,7 @@ describe('preval-extract/resolveSource', () => {
       {
         code: 'source',
         loc: { line: 0, column: 0 },
+        dependency: 'foo',
       }
     );
   });

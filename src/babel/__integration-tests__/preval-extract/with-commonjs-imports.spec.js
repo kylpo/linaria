@@ -19,6 +19,9 @@ describe('preval-extract babel plugin with commonjs imports', () => {
     const css = getCSSForClassName(match[1]);
     expect(css).toMatch('font-size: 14px');
     expect(css).toMatchSnapshot();
+    expect(code).toMatch(
+      '//linaria-dependency: ./src/babel/__integration-tests__/__fixtures__/commonjs/constants.js'
+    );
   });
 
   it('should preval imported constants with destructurization', () => {
@@ -35,5 +38,8 @@ describe('preval-extract babel plugin with commonjs imports', () => {
     const css = getCSSForClassName(match[1]);
     expect(css).toMatch('font-size: 14px');
     expect(css).toMatchSnapshot();
+    expect(code).toMatch(
+      '//linaria-dependency: ./src/babel/__integration-tests__/__fixtures__/commonjs/constants.js'
+    );
   });
 });
