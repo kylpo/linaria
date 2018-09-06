@@ -1,4 +1,4 @@
-Linaria fork with 1 change to allow [chronstruct-primitives](https://github.com/Chronstruct/primitives)'s auto-import functionality
+Linaria fork with [1 change](https://github.com/kylpo/linaria/commit/4ea973ead4c73a68b59e943c311e96e12211b806#diff-f6956d4f885d2a68eba21eb44c49e71bR53) to allow [chronstruct-primitives](https://github.com/Chronstruct/primitives)'s auto-import functionality
 
 #### Updating repo with Linaria changes
 ```shell
