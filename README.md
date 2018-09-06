@@ -1,3 +1,12 @@
+Linaria fork with 1 change to allow [chronstruct-primitives](https://github.com/Chronstruct/primitives)'s auto-import functionality
+
+#### Updating repo with Linaria changes
+```shell
+$ git fetch upstream
+$ git checkout master
+$ git merge upstream/master
+```
+
 <p align="center">
   <img alt="Linaria" src="website/static/images/linaria-logo@2x.png" width="496">
 </p>
